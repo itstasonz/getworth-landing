@@ -299,15 +299,22 @@
 
             document.getElementById('app-content').innerHTML = `
                 <section class="hero section-padding">
-                    <div class="container text-center fade-in">
-                        <h1 class="hero-headline" style="font-size: 4.5rem; margin-bottom: 24px;">${t.hero.headline}</h1>
-                        <p class="hero-subheadline" style="font-size: 1.5rem; margin-bottom: 16px;">${t.hero.subheadline}</p>
-                        <p class="hero-support" style="max-width: 800px; margin: 0 auto 32px; color: hsl(var(--text-muted));">${t.hero.support}</p>
-                        <div class="hero-ctas" style="display: flex; gap: 16px; justify-content: center;">
-                            <a href="${t.hero.investorEmail}" class="btn-neon">${t.hero.ctaPrimary}</a>
-                            <a href="${t.hero.investorEmail}" class="btn-secondary">${t.hero.ctaSecondary}</a>
+                    <div class="container grid-2" style="align-items: center;">
+                        <div class="hero-content fade-in">
+                            <h1 class="hero-headline" style="font-size: 4.5rem; margin-bottom: 24px;">${t.hero.headline}</h1>
+                            <p class="hero-subheadline" style="font-size: 1.5rem; margin-bottom: 16px;">${t.hero.subheadline}</p>
+                            <p class="hero-support" style="margin-bottom: 32px; color: hsl(var(--text-muted));">${t.hero.support}</p>
+                            <div class="hero-ctas" style="display: flex; gap: 16px;">
+                                <a href="${t.hero.investorEmail}" class="btn-neon">${t.hero.ctaPrimary}</a>
+                                <a href="${t.hero.investorEmail}" class="btn-secondary">${t.hero.ctaSecondary}</a>
+                            </div>
+                            <p style="margin-top: 24px; font-size: 0.9rem; color: hsl(var(--text-muted));">${t.hero.trust}</p>
                         </div>
-                        <p style="margin-top: 24px; font-size: 0.9rem; color: hsl(var(--text-muted));">${t.hero.trust}</p>
+                        <div class="hero-visual fade-in" style="animation-delay: 0.2s;">
+                            <div class="glass-card" style="padding: 10px; border-radius: 20px;">
+                                <img src="assets/hero_mockup.png" alt="GetWorth Mockup" style="width: 100%; border-radius: 12px; display: block;">
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -394,8 +401,26 @@
                         <h2 style="font-size: 3rem; margin-bottom: 16px;">${t.visionFilm.title}</h2>
                         <p style="font-size: 1.5rem; margin-bottom: 48px; color: hsl(var(--text-muted));">${t.visionFilm.subtitle}</p>
                         
-                        <div class="vision-sequence-container">
+                        <div class="vision-sequence-container" style="margin-bottom: 64px;">
                             <canvas id="vision-bg-canvas"></canvas>
+                        </div>
+
+                        <div class="storyboard-section">
+                            <h3 style="font-size: 2rem; margin-bottom: 32px;">${t.visionFilm.cta}</h3>
+                            <div class="grid-4">
+                                <div class="glass-card" style="padding: 8px;">
+                                    <img src="assets/frame_1.png" alt="Storyboard 1" style="width: 100%; border-radius: 8px;">
+                                </div>
+                                <div class="glass-card" style="padding: 8px;">
+                                    <img src="assets/frame_2.png" alt="Storyboard 2" style="width: 100%; border-radius: 8px;">
+                                </div>
+                                <div class="glass-card" style="padding: 8px;">
+                                    <img src="assets/frame_3.png" alt="Storyboard 3" style="width: 100%; border-radius: 8px;">
+                                </div>
+                                <div class="glass-card" style="padding: 8px;">
+                                    <img src="assets/frame_4.png" alt="Storyboard 4" style="width: 100%; border-radius: 8px;">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
