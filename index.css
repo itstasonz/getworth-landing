@@ -119,6 +119,40 @@ nav {
     gap: var(--space-4);
 }
 
+.header-icon-strip {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--card-shadow);
+}
+
+.header-icon-strip img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.header-icon-strip img:hover {
+    transform: scale(1.1);
+    border-color: hsl(var(--accent-blue));
+    box-shadow: 0 0 10px var(--glow-blue);
+}
+
+@media (max-width: 968px) {
+    .header-icon-strip {
+        display: none;
+        /* Hide icons in mobile header for cleanliness */
+    }
+}
+
 .nav-links {
     display: flex;
     gap: var(--space-4);
