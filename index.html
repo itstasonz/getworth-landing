@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title">GetWorth | Platform & Vision</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&family=Heebo:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <span class="text-gradient">GetWorth</span>
+            </div>
+            <div class="nav-actions">
+                <!-- Lang Toggle -->
+                <button id="lang-toggle" class="icon-btn" onclick="toggleLang()">
+                    <span id="lang-label">עב</span>
+                </button>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="icon-btn" onclick="toggleTheme()">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="app-content">
+        <!-- Content injected via JS -->
+    </main>
+
+    <footer class="footer section-padding">
+        <div class="container" id="footer-content">
+            <!-- Dynamic Footer -->
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                dir: "ltr",
+                hero: {
+                    headline: "Building the <span class='text-gradient'>real-world intelligence layer.</span>",
+                    subheadline: "An AI-powered platform turning physical reality into searchable, comparable, and tradable data.",
+                    support: "A camera-first marketplace combining product recognition, local commerce, price intelligence, and trust infrastructure.",
+                    ctaPrimary: "Partner with us",
+                    ctaSecondary: "Request investor access",
+                    investorEmail: "mailto:Getworth@Getworth.Com",
+                    trust: "Consumer app • Marketplace • Data platform"
+                },
+                shift: {
+                    title: "Physical commerce is the largest <span class='text-gradient'>unindexed system</span> in the world.",
+                    p1: "Trillions of physical products",
+                    p2: "Billions of daily price decisions",
+                    p3: "Zero unified intelligence layer",
+                    p4: "No real-world trust graph",
+                    p5: "No live product understanding",
+                    footer: "We are building what Google built for the web — for the physical world."
+                },
+                platform: {
+                    title: "The platform we are building",
+                    pillar1: { t: "Recognition Engine", d: "Real-world product understanding at scale." },
+                    pillar2: { t: "Commerce Layer", d: "Location-aware discovery for physical goods." },
+                    pillar3: { t: "Price Intelligence", d: "Live price aggregation across all touchpoints." },
+                    pillar4: { t: "Trust Infrastructure", d: "Verified identities and reputation graphs." },
+                    pillar5: { t: "Marketplace Engine", d: "P2P and B2C transaction orchestration." },
+                    pillar6: { t: "Data Network", d: "The physical-world knowledge graph." }
+                },
+                tech: {
+                    title: "Deep technology. Real defensibility.",
+                    blocks: [
+                        { t: "AI Vision + Fingerprinting", d: "Advanced recognition without barcodes." },
+                        { t: "Geospatial Engine", d: "Hyper-local marketplace orchestration." },
+                        { t: "Signal Aggregation", d: "Real-time price & demand telemetry." },
+                        { t: "Trust Scoring", d: "Infrastructure for accountability and safety." },
+                        { t: "Places Intelligence", d: "Real-time merchant & inventory graph." },
+                        { t: "Behavioral Data", d: "Physical commerce intent mapping." }
+                    ],
+                    highlight: "This is not a shopping app. This is infrastructure."
+                },
+                moat: {
+                    title: "Every scan builds the system.",
+                    steps: [
+                        { t: "More Users", icon: "👥" },
+                        { t: "Better Recognition", icon: "🧠" },
+                        { t: "Better Data", icon: "📊" },
+                        { t: "Stronger Moat", icon: "🏰" }
+                    ]
+                },
+                monetization: {
+                    title: "Multiple revenue layers",
+                    items: ["Merchant Discovery", "Transaction Fees", "Verified Sellers", "Enterprise Data Access", "Brand Intelligence", "Smart City APIs"]
+                },
+                cta: {
+                    title: "Join the physical internet.",
+                    partner: "Partner with us",
+                    pitch: "Request pitch access",
+                    contact: "Contact team",
+                    footer: "Built for the real world. © 2026 GetWorth"
+                },
+                concept: {
+                    title: "The Intelligence Layer of Reality.",
+                    reality: {
+                        label: "Product Intelligence",
+                        t1: "Scan anything",
+                        d1: "Not just groceries. Any physical object.",
+                        t2: "Buy and sell",
+                        d2: "From stores and from people.",
+                        t3: "New and second-hand",
+                        d3: "Compare market value across both worlds.",
+                        t4: "Condition and authenticity",
+                        d4: "Used, like new, verified.",
+                        t5: "Trust layer",
+                        d5: "Every seller builds a reputation.",
+                        t6: "Intelligence layer",
+                        d6: "Every scan builds the system.",
+                        quote: "GetWorth is not a grocery app.<br><br>It is the operating system of physical value."
+                    }
+                },
+                visionFilm: {
+                    title: "Investor Vision Film",
+                    subtitle: "GetWorth — Know what anything is worth.",
+                    cta: "View Storyboard"
+                },
+                tryNow: {
+                    title: "Try it Now!",
+                    subtitle: "Experience the intelligence layer yourself.",
+                    link: "https://getworth.netlify.app/",
+                    cta: "Open App"
+                }
+            },
+            he: {
+                dir: "rtl",
+                hero: {
+                    headline: "אנחנו הופכים את העולם הפיזי <span class='text-gradient'>לחכם ודיגיטלי</span>",
+                    subheadline: "פלטפורמת AI שהופכת כל חפץ סביבכם למידע שניתן לחפש, להשוות ולסחור בו.",
+                    support: "שוק שמתחיל במצלמה: זיהוי מוצרים, קניות מקומיות, השוואת מחירים ותשתית בטוחה למסחר.",
+                    ctaPrimary: "בואו נשתף פעולה",
+                    ctaSecondary: "גישת משקיעים",
+                    investorEmail: "mailto:Getworth@Getworth.Com",
+                    trust: "אפליקציה לצרכנים • זירת מסחר • פלטפורמת נתונים"
+                },
+                shift: {
+                    title: "רוב הקניות בעולם עדיין קורות מחוץ לאינטרנט. <br><span class='text-gradient'>אנחנו כאן כדי לשנות את זה.</span>",
+                    p1: "מיליארדי מוצרים פיזיים ללא זיהוי",
+                    p2: "מיליארדי החלטות קנייה ללא מידע",
+                    p3: "חוסר בשכבת מידע אחת מאוחדת",
+                    p4: "גרף אמון שעדיין לא קיים בעולם האמיתי",
+                    p5: "הבנה של מוצרים בזמן אמת",
+                    footer: "אנחנו בונים לעולם האמיתי את מה שגוגל בנתה לאינטרנט."
+                },
+                platform: {
+                    title: "החזון שלנו: מציאות חכמה",
+                    pillar1: { t: "זיהוי מוצרים", d: "הבנה עמוקה של כל מה שזז בעולם האמיתי." },
+                    pillar2: { t: "שכבת מסחר", d: "גילוי מוצרים סביבכם לפי מיקום." },
+                    pillar3: { t: "מידע על מחירים", d: "איסוף מחירי שוק מכל מקום בזמן אמת." },
+                    pillar4: { t: "תשתית בטוחה", d: "אימות זהות ומוניטין כדי שתוכלו לסחור בראש שקט." },
+                    pillar5: { t: "ניהול מסחר", d: "מנוע לעסקאות קלות בין אנשים לעסקים." },
+                    pillar6: { t: "רשת ידע", d: "המאגר הגדול ביותר למידע על העולם הפיזי." }
+                },
+                tech: {
+                    title: "טכנולוגיה עמוקה בשירות המציאות",
+                    blocks: [
+                        { t: "זיהוי AI מתקדם", d: "זיהוי מוצרים לפי המראה שלהם, ללא ברקוד." },
+                        { t: "מנוע מיקום", d: "ניהול זירת מסחר מקומית חכמה." },
+                        { t: "איסוף נתונים", d: "מעקב אחרי מחירים וביקוש בכל רגע." },
+                        { t: "דירוג אמינות", d: "מערכת ששומרת עליכם בטוחים בעסקאות." },
+                        { t: "מידע על חנויות", d: "מפה חיה של מלאי וסוחרים סביבכם." },
+                        { t: "נתוני כוונת קנייה", d: "הבנה של מה אנשים מחפשים בעולם האמיתי." }
+                    ],
+                    highlight: "זו לא עוד אפליקציית קניות. זו מערכת הפעלה לעולם הפיזי."
+                },
+                moat: {
+                    title: "כל סריקה הופכת אותנו לחכמים יותר.",
+                    steps: [
+                        { t: "יותר משתמשים", icon: "" },
+                        { t: "זיהוי טוב יותר", icon: "" },
+                        { t: "מידע מדויק יותר", icon: "" },
+                        { t: "שכבת הגנה עליונה", icon: "" }
+                    ]
+                },
+                monetization: {
+                    title: "איך המערכת מייצרת ערך",
+                    items: ["קידום סוחרים", "עמלות עסקה", "אימות סוחרים", "גישה לנתוני שוק", "מידע למותגים", "Smart City APIs"]
+                },
+                cta: {
+                    title: "הצטרפו לאינטרנט הפיזי.",
+                    partner: "שיתוף פעולה",
+                    pitch: "גישה למצגת",
+                    contact: "דברו איתנו",
+                    footer: "בנוי לעולם האמיתי. © 2026 GetWorth"
+                },
+                concept: {
+                    title: "הופכים כל חפץ למידע.",
+                    reality: {
+                        label: "אינטליגנציית מוצרים",
+                        t1: "סרקו הכל",
+                        d1: "מרהיטים ועד נעליים. הכל ניתן לסריקה.",
+                        t2: "לקנות ולמכור",
+                        d2: "מחנויות או מאנשים פרטיים לידכם.",
+                        t3: "חדש או יד שנייה",
+                        d3: "השוואה מהירה בין מוצר חדש למשומש.",
+                        t4: "בדיקת איכות",
+                        d4: "יד שנייה, כמו חדש, או מוצר מאומת.",
+                        t5: "שכבת אמון",
+                        d5: "כל מוכר בונה דירוג אמינות.",
+                        t6: "אינטליגנציה",
+                        d6: "המערכת לומדת מכל אינטראקציה.",
+                        quote: "GetWorth היא לא סתם אפליקציה.<br><br>היא מערכת הפעלה לערך של העולם הפיזי."
+                    }
+                },
+                visionFilm: {
+                    title: "סרט חזון למשקיעים",
+                    subtitle: "לדעת כמה כל דבר שווה, ברגע אחד.",
+                    cta: "לצפייה בסטוריבורד"
+                },
+                tryNow: {
+                    title: "נסו עכשיו!",
+                    subtitle: "חוו בעצמכם את שכבת המידע החכמה.",
+                    link: "https://getworth.netlify.app/",
+                    cta: "לפתיחת האפליקציה"
+                }
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('theme', currentTheme);
+            document.getElementById('theme-icon').innerText = currentTheme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'he' : 'en';
+            localStorage.setItem('lang', currentLang);
+            render();
+        }
+
+        function render() {
+            const t = translations[currentLang];
+            document.documentElement.dir = t.dir;
+            document.getElementById('lang-label').innerText = currentLang === 'en' ? 'עב' : 'EN';
+
+            document.getElementById('app-content').innerHTML = `
+                <section class="hero section-padding">
+                    <div class="container text-center fade-in">
+                        <h1 class="hero-headline" style="font-size: 4.5rem; margin-bottom: 24px;">${t.hero.headline}</h1>
+                        <p class="hero-subheadline" style="font-size: 1.5rem; margin-bottom: 16px;">${t.hero.subheadline}</p>
+                        <p class="hero-support" style="max-width: 800px; margin: 0 auto 32px; color: hsl(var(--text-muted));">${t.hero.support}</p>
+                        <div class="hero-ctas" style="display: flex; gap: 16px; justify-content: center;">
+                            <a href="${t.hero.investorEmail}" class="btn-neon">${t.hero.ctaPrimary}</a>
+                            <a href="${t.hero.investorEmail}" class="btn-secondary">${t.hero.ctaSecondary}</a>
+                        </div>
+                        <p style="margin-top: 24px; font-size: 0.9rem; color: hsl(var(--text-muted));">${t.hero.trust}</p>
+                    </div>
+                </section>
+
+                <section class="try-now section-padding text-center" style="background: linear-gradient(135deg, rgba(100, 255, 218, 0.05) 0%, rgba(26, 32, 44, 1) 100%);">
+                    <div class="container fade-in">
+                        <h2 style="font-size: 3.5rem; margin-bottom: 16px;" class="text-gradient">${t.tryNow.title}</h2>
+                        <p style="font-size: 1.25rem; margin-bottom: 32px; color: hsl(var(--text-muted));">${t.tryNow.subtitle}</p>
+                        <a href="${t.tryNow.link}" target="_blank" class="btn-neon" style="font-size: 1.25rem; padding: 16px 48px;">${t.tryNow.cta}</a>
+                    </div>
+                </section>
+
+                <section class="shift section-padding" style="background: hsl(var(--bg-secondary));">
+                    <div class="container grid-2" style="align-items: center;">
+                        <div class="shift-content">
+                            <h2 style="font-size: 3rem; margin-bottom: 24px;">${t.shift.title}</h2>
+                            <ul style="list-style: none; font-size: 1.25rem;">
+                                <li style="margin-bottom: 12px;">• ${t.shift.p1}</li>
+                                <li style="margin-bottom: 12px;">• ${t.shift.p2}</li>
+                                <li style="margin-bottom: 12px;">• ${t.shift.p3}</li>
+                                <li style="margin-bottom: 12px;">• ${t.shift.p4}</li>
+                                <li style="margin-bottom: 12px;">• ${t.shift.p5}</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card" style="padding: 40px; text-align: center;">
+                            <p style="font-size: 2rem; font-weight: 700; color: hsl(var(--text-main));">${t.shift.footer}</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="platform section-padding">
+                    <div class="container">
+                        <h2 class="text-center" style="font-size: 3rem; margin-bottom: 48px;">${t.platform.title}</h2>
+                        <div class="grid-3">
+                            <div class="glass-card"><h3>${t.platform.pillar1.t}</h3><p>${t.platform.pillar1.d}</p></div>
+                            <div class="glass-card"><h3>${t.platform.pillar2.t}</h3><p>${t.platform.pillar2.d}</p></div>
+                            <div class="glass-card"><h3>${t.platform.pillar3.t}</h3><p>${t.platform.pillar3.d}</p></div>
+                            <div class="glass-card"><h3>${t.platform.pillar4.t}</h3><p>${t.platform.pillar4.d}</p></div>
+                            <div class="glass-card"><h3>${t.platform.pillar5.t}</h3><p>${t.platform.pillar5.d}</p></div>
+                            <div class="glass-card"><h3>${t.platform.pillar6.t}</h3><p>${t.platform.pillar6.d}</p></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="repositioning section-padding">
+                    <div class="container">
+                        <h2 class="text-center" style="font-size: 4rem; margin-bottom: 64px;">${t.concept.title}</h2>
+                        <div class="reality-focused-view">
+                            <div class="reality-image-wrapper">
+                                <img src="assets/repositioning_reality.png" alt="Reality of GetWorth">
+                            </div>
+                            <div class="truth-grid">
+                                <div class="truth-item">
+                                    <h4>${t.concept.reality.t1}</h4>
+                                    <p>${t.concept.reality.d1}</p>
+                                </div>
+                                <div class="truth-item">
+                                    <h4>${t.concept.reality.t2}</h4>
+                                    <p>${t.concept.reality.d2}</p>
+                                </div>
+                                <div class="truth-item">
+                                    <h4>${t.concept.reality.t3}</h4>
+                                    <p>${t.concept.reality.d3}</p>
+                                </div>
+                                <div class="truth-item">
+                                    <h4>${t.concept.reality.t4}</h4>
+                                    <p>${t.concept.reality.d4}</p>
+                                </div>
+                                <div class="truth-item">
+                                    <h4>${t.concept.reality.t5}</h4>
+                                    <p>${t.concept.reality.d5}</p>
+                                </div>
+                                <div class="truth-item">
+                                    <h4>${t.concept.reality.t6}</h4>
+                                    <p>${t.concept.reality.d6}</p>
+                                </div>
+                            </div>
+                            <p class="reality-quote" style="margin-top: 48px;">${t.concept.reality.quote}</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="vision-film section-padding text-center">
+                    <div class="container">
+                        <h2 style="font-size: 3rem; margin-bottom: 16px;">${t.visionFilm.title}</h2>
+                        <p style="font-size: 1.5rem; margin-bottom: 48px; color: hsl(var(--text-muted));">${t.visionFilm.subtitle}</p>
+                        
+                        <div class="vision-sequence-container">
+                            <canvas id="vision-bg-canvas"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tech section-padding" style="background: hsl(var(--bg-secondary));">
+                    <div class="container">
+                        <h2 class="text-center" style="font-size: 3rem; margin-bottom: 48px;">${t.tech.title}</h2>
+                        <div class="grid-3">
+                            ${t.tech.blocks.map(b => `<div class="glass-card"><h3>${b.t}</h3><p>${b.d}</p></div>`).join('')}
+                        </div>
+                        <p class="text-center" style="margin-top: 48px; font-size: 1.5rem; font-weight: 700;">"${t.tech.highlight}"</p>
+                    </div>
+                </section>
+
+                <section class="moat section-padding">
+                    <div class="container text-center">
+                        <h2 style="font-size: 3rem; margin-bottom: 64px;">${t.moat.title}</h2>
+                        <div class="flywheel-wrap">
+                            <div class="flywheel-flow">
+                                ${t.moat.steps.map((step, idx) => `
+                                    <div class="flywheel-step" style="--i: ${idx}">
+                                        <div class="step-icon">${step.icon}</div>
+                                        <span class="step-label">${step.t}</span>
+                                    </div>
+                                    ${idx < t.moat.steps.length - 1 ? '<div class="flywheel-arrow">→</div>' : ''}
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="monetization section-padding" style="background: hsl(var(--bg-secondary));">
+                    <div class="container">
+                        <h2 class="text-center" style="font-size: 3rem; margin-bottom: 48px;">${t.monetization.title}</h2>
+                        <div class="grid-3">
+                            ${t.monetization.items.map(item => `<div class="glass-card text-center" style="padding: 32px;"><h3>${item}</h3></div>`).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <section class="cta-final section-padding">
+                    <div class="container text-center">
+                        <h2 style="font-size: 4rem; margin-bottom: 32px;">${t.cta.title}</h2>
+                        <div class="hero-ctas" style="display: flex; gap: 16px; justify-content: center;">
+                            <a href="${t.hero.investorEmail}" class="btn-neon">${t.cta.partner}</a>
+                            <a href="${t.hero.investorEmail}" class="btn-secondary">${t.cta.pitch}</a>
+                            <a href="${t.hero.investorEmail}" class="btn-secondary">${t.cta.contact}</a>
+                        </div>
+                    </div>
+                </section>
+            `;
+
+            document.getElementById('footer-content').innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--glass-border); padding-top: 32px; flex-wrap: wrap; gap: 24px;">
+                    <p style="color: hsl(var(--text-muted));">${t.cta.footer}</p>
+                    <div style="display: flex; gap: 16px; align-items: center;">
+                        <span style="font-weight: 600; font-size: 0.9rem;">GetWorth</span>
+                        <div style="width: 1px; height: 16px; background: var(--glass-border);"></div>
+                        <p style="color: hsl(var(--text-muted)); font-size: 0.9rem;">Partner & Investor Platform</p>
+                    </div>
+                </div>
+            `;
+
+            // Initialization of theme on load
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            document.getElementById('theme-icon').innerText = currentTheme === 'light' ? '🌙' : '☀️';
+        }
+
+
+        // Vision Sequence Background Logic
+        const totalFrames = 80;
+        const images = [];
+        let canvas = null;
+        let ctx = null;
+        let frameIndex = 0;
+
+        function preloadImages() {
+            const prefix = "assets/vision_sequence/Create_an_ultrarealistic_202601261444_3oaq4_";
+            for (let i = 0; i < totalFrames; i++) {
+                const img = new Image();
+                const num = i.toString().padStart(3, '0');
+                img.src = `${prefix}${num}.jpg`;
+                images.push(img);
+            }
+        }
+
+        function initCanvas() {
+            canvas = document.getElementById('vision-bg-canvas');
+            if (!canvas) return;
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            animate();
+        }
+
+        function resizeCanvas() {
+            if (!canvas) return;
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+
+        function animate() {
+            if (!ctx || images.length === 0) {
+                requestAnimationFrame(animate);
+                return;
+            }
+
+            const img = images[frameIndex];
+            if (img.complete) {
+                const iw = img.width;
+                const ih = img.height;
+                const cw = canvas.width;
+                const ch = canvas.height;
+                const scale = Math.max(cw / iw, ch / ih);
+                const nw = iw * scale;
+                const nh = ih * scale;
+                const nx = (cw - nw) / 2;
+                const ny = (ch - nh) / 2;
+
+                ctx.clearRect(0, 0, cw, ch);
+                ctx.drawImage(img, nx, ny, nw, nh);
+            }
+
+            frameIndex = (frameIndex + 1) % totalFrames;
+            setTimeout(() => {
+                requestAnimationFrame(animate);
+            }, 41); // ~24fps for cinematic feel
+        }
+
+        render();
+        preloadImages();
+        setTimeout(initCanvas, 100);
+    </script>
+</body>
+
+</html>
