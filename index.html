@@ -43,6 +43,21 @@
         </div>
     </footer>
 
+    <div class="mobile-prompt-overlay" id="mobilePromptOverlay">
+        <div class="mobile-prompt" id="mobilePrompt">
+            <button class="close-btn" onclick="closePrompt()" aria-label="Close">×</button>
+            <div class="icon">📱</div>
+            <h2 id="mp-title">Switch to Mobile View?</h2>
+            <p id="mp-desc">Get the best experience with our mobile-optimized interface designed for your device.</p>
+            <div class="button-group">
+                <button class="btn-neon" id="mp-primary" onclick="switchToMobile()">Switch to Mobile View</button>
+                <button class="btn-secondary" id="mp-secondary" onclick="continueDesktop()">Continue in Desktop
+                    Mode</button>
+            </div>
+            <div class="status-message" id="statusMessage"></div>
+        </div>
+    </div>
+
     <script>
         const translations = {
             en: {
@@ -135,6 +150,13 @@
                     subtitle: "Experience the intelligence layer yourself.",
                     link: "https://getworth.netlify.app/",
                     cta: "Open App"
+                },
+                mobilePrompt: {
+                    title: "Switch to Mobile View?",
+                    desc: "Get the best experience with our mobile-optimized interface designed for your device.",
+                    primary: "Switch to Mobile View",
+                    secondary: "Continue in Desktop Mode",
+                    success: "✓ Switched to mobile view!"
                 }
             },
             he: {
@@ -227,6 +249,13 @@
                     subtitle: "חוו בעצמכם את שכבת המידע החכמה.",
                     link: "https://getworth.netlify.app/",
                     cta: "לפתיחת האפליקציה"
+                },
+                mobilePrompt: {
+                    title: "לעבור לתצוגת נייד?",
+                    desc: "קבלו את החוויה הטובה ביותר עם ממשק מותאם אישית למכשיר שלכם.",
+                    primary: "מעבר לתצוגת נייד",
+                    secondary: "המשך בתצוגת שולחן עבודה",
+                    success: "✓ עברנו לתצוגת נייד!"
                 }
             }
         };
@@ -251,6 +280,14 @@
             const t = translations[currentLang];
             document.documentElement.dir = t.dir;
             document.getElementById('lang-label').innerText = currentLang === 'en' ? 'עב' : 'EN';
+
+            // Update Mobile Prompt Strings
+            if (document.getElementById('mp-title')) {
+                document.getElementById('mp-title').innerText = t.mobilePrompt.title;
+                document.getElementById('mp-desc').innerText = t.mobilePrompt.desc;
+                document.getElementById('mp-primary').innerText = t.mobilePrompt.primary;
+                document.getElementById('mp-secondary').innerText = t.mobilePrompt.secondary;
+            }
 
             document.getElementById('app-content').innerHTML = `
                 <section class="hero section-padding">
@@ -480,9 +517,56 @@
             }, 41); // ~24fps for cinematic feel
         }
 
+        // Mobile Mode Prompt Logic
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+        }
+
+        function showMobilePrompt() {
+            const hasSeenPrompt = sessionStorage.getItem('mobilePromptSeen');
+            const viewMode = localStorage.getItem('viewMode');
+
+            if (isMobileDevice() && !hasSeenPrompt && viewMode !== 'mobile') {
+                document.getElementById('mobilePromptOverlay').classList.add('active');
+            }
+        }
+
+        function switchToMobile() {
+            localStorage.setItem('viewMode', 'mobile');
+            sessionStorage.setItem('mobilePromptSeen', 'true');
+
+            const t = translations[currentLang];
+            const statusMsg = document.getElementById('statusMessage');
+            statusMsg.textContent = t.mobilePrompt.success;
+            statusMsg.className = 'status-message success active';
+
+            document.body.classList.add('mobile-mode');
+
+            setTimeout(() => {
+                closePrompt();
+            }, 1500);
+        }
+
+        function continueDesktop() {
+            localStorage.setItem('viewMode', 'desktop');
+            sessionStorage.setItem('mobilePromptSeen', 'true');
+            closePrompt();
+        }
+
+        function closePrompt() {
+            const overlay = document.getElementById('mobilePromptOverlay');
+            const prompt = document.getElementById('mobilePrompt');
+            prompt.style.animation = 'slideDown 0.3s ease-out forwards';
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                prompt.style.animation = '';
+            }, 300);
+        }
+
         render();
         preloadImages();
         setTimeout(initCanvas, 100);
+        setTimeout(showMobilePrompt, 1000);
     </script>
 </body>
 
